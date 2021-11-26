@@ -1,3 +1,4 @@
+import os
 import pandas
 import sklearn
 import sktools
@@ -9,7 +10,10 @@ from sklearn.pipeline import make_pipeline
 
 #add comment
 
-dataset = pandas.read_csv("C:/Users/ananya/Documents/github/spatialarches/spatialarches/bigData.csv")
+PATH = os.path.dirname(__file__)
+FILE_IN = os.path.join(PATH,'bigData.csv')
+FILE_TEST = os.path.join(PATH,'theghostOfGaudi.csv')
+dataset = pandas.read_csv(FILE_IN)
 
 X = dataset[['Width','Depth','aspeed']]
 y = dataset['Deviation']
@@ -29,7 +33,7 @@ q_reg.fit(X,y)
 #for loop with prediction for test data as data which is needed
 #have prediction generator and save least value
 
-test_data = pandas.read_csv("C:/Users/ananya/Documents/github/spatialarches/spatialarches/theghostOfGaudi.csv")
+test_data = pandas.read_csv(FILE_TEST)
 w_ = test_data['Width']
 d_ = test_data['Depth']
 prediction = q_reg.predict([[135,49,1.8]])
