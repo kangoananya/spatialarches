@@ -9,7 +9,7 @@ from sklearn.pipeline import make_pipeline
 
 #add comment
 
-dataset = pandas.read_csv("C:/Users/ananya/Documents/masdfab-notes/work/T1-MiniProject/bigData.csv")
+dataset = pandas.read_csv("C:/Users/ananya/Documents/github/spatialarches/spatialarches/bigData.csv")
 
 X = dataset[['Width','Depth','aspeed']]
 y = dataset['Deviation']
@@ -29,7 +29,7 @@ q_reg.fit(X,y)
 #for loop with prediction for test data as data which is needed
 #have prediction generator and save least value
 
-test_data = pandas.read_csv("C:/Users/ananya/Documents/masdfab-notes/work/T1-MiniProject/theghostOfGaudi.csv")
+test_data = pandas.read_csv("C:/Users/ananya/Documents/github/spatialarches/spatialarches/theghostOfGaudi.csv")
 w_ = test_data['Width']
 d_ = test_data['Depth']
 prediction = q_reg.predict([[135,49,1.8]])
