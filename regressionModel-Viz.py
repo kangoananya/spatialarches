@@ -27,8 +27,8 @@ u = dataset['aspeed']
 v = dataset['Width']
 w = dataset['Depth']
 
-x_pred = np.linspace(100, 170, 50)   # range of Width
-y_pred = np.linspace(25, 50, 50)  # range of Depth
+x_pred = np.linspace(90, 170, 50)   # range of Width
+y_pred = np.linspace(20, 65, 50)  # range of Depth
 xx_pred, yy_pred = np.meshgrid(x_pred, y_pred)
 model_viz = np.array([xx_pred.flatten(), yy_pred.flatten()]).T
 
@@ -51,6 +51,9 @@ predicted = regr.predict(model_viz)
 
 fig = plt.figure(figsize=(60,10))
 ax2 = fig.add_subplot(122,projection = '3d')
+ax2.set_xlabel('Width', fontsize=12)
+ax2.set_ylabel('Depth', fontsize=12)
+ax2.set_zlabel('Extruder Speed', fontsize=12)
 
 ax2.plot(x_, y_, z_, color='k', zorder=15, linestyle='none', marker='o', alpha=0.5)
 ax2.scatter(xx_pred.flatten(), yy_pred.flatten(), predicted, facecolor=(0,0,0,0), s=10, edgecolor='xkcd:deep pink')
@@ -72,7 +75,5 @@ prediction = q_reg.predict(test_data[['Width','Depth','aspeed']])
 
 for i,p in enumerate(prediction):
     if p<1.5 and p>-1.5:
-        pass
         print("for Width %s and Depth %s, best aspeed would be %s" %(w_[i],d_[i],a_[i]))
-
 #save least value as list
