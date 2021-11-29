@@ -12,7 +12,7 @@ from sklearn.pipeline import make_pipeline
 
 PATH = os.path.dirname(__file__)
 FILE_IN = os.path.join(PATH,'bigData.csv')
-FILE_TEST = os.path.join(PATH,'theghostOfGaudi.csv')
+FILE_TEST = os.path.join(PATH,'theghostOfGaudi copy.csv')
 dataset = pandas.read_csv(FILE_IN)
 
 X = dataset[['Width','Depth','aspeed']]
