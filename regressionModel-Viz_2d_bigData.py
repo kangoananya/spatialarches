@@ -44,16 +44,18 @@ def draw(x_,y_,aspeed,cv):
     ax2 = fig.add_subplot(111)
     ax2.set_xlabel('Width/Height Ratio', fontsize=20)
     ax2.set_ylabel('Deviation', fontsize=20)
-    ax2.set_title('Aspeed ='+str(aspeed)+'   CurveWidth ='+str(cv) ,fontsize=20)
+    ax2.set_title('Aspeed = '+str(aspeed)+'   CurveWidth = '+str(cv) ,fontsize=30)
     ax2.scatter(x_, y_, color="black", s = 30)
 
     ax2.spines['right'].set_color('none')
     ax2.spines['top'].set_position(('data',0))
     ax2.spines['top'].set_color('grey')
+    ax2.spines['top'].set_linewidth(3)
+    
     ax2.grid(linewidth=0.2, alpha=1)
     ax2.plot(x_, y_, color='xkcd:deep pink', linewidth=1.5)
 
-    fig.savefig('image%scurvewidth%saspeed.png'%(cv,aspeed))
+    fig.savefig('image%scurvewidth%saspeed.jpg'%(cv,aspeed))
 
 
 
@@ -73,7 +75,7 @@ for v__ in v_:
                 x_.append(x[i])
                 y_.append(y[i])
         s,cv = v__
-        if len(x_) > 2:
+        if len(x_) > 3:
             a = list(zip(x_,y_))
             a = sorted(a)
             x_ = [x for x,y in a]
