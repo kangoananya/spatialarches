@@ -40,9 +40,14 @@ a_ = test_data['aspeed']
 
 prediction = q_reg.predict(test_data[['Width','Depth','aspeed']])
 
+lis = []
 for i,p in enumerate(prediction):
+    speed = []
     if p<1.5 and p>-1.5:
+        speed.append(a_[i])
         print("for Width %s and Depth %s, best aspeed would be %s" %(w_[i],d_[i],a_[i]))
+    if speed:
+        lis.append(max(speed))
 
-
+print(lis)
 #save least value as list
