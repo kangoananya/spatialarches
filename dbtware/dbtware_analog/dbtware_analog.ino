@@ -103,7 +103,7 @@ float pollAnalogIn(){
 void analogToSpeed(){
     int val = pollAnalogIn();
     //Serial.println(val);
-    if((val-lastAnalogIn) > 10 || (val-lastAnalogIn) <-10){
+    if((val-lastAnalogIn) > 30 || (val-lastAnalogIn) <-30){
     lastAnalogIn = val;
     float scaled = float(map(val,0,1023,110,210))/10.0;
     scaled = float(ceil(scaled))/10.0;

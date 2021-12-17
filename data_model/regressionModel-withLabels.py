@@ -36,18 +36,24 @@ q_reg.fit(X,y)
 test_data = pandas.read_csv(FILE_TEST)
 w_ = test_data['Width']
 d_ = test_data['Depth']
-a_ = test_data['aspeed']
+#a_ = test_data['aspeed']
 
-prediction = q_reg.predict(test_data[['Width','Depth','aspeed']])
-
+#prediction = q_reg.predict(test_data[['Width','Depth','aspeed']])
 lis = []
-for i,p in enumerate(prediction):
-    speed = []
-    if p<1.5 and p>-1.5:
-        speed.append(a_[i])
-        print("for Width %s and Depth %s, best aspeed would be %s" %(w_[i],d_[i],a_[i]))
-    if speed:
-        lis.append(max(speed))
 
-print(lis)
+for w,d in zip(w_,d_):
+    speed = []
+    for s in test_speeds:
+        prediction = q_reg.predict([[w,d,s]])
+        if(prediction>-1 and prediction<2.5):
+           print('%s width and %s depth at %s aspeed - %s deviation' %(w,d,s,prediction))
+           speed.append(s)
+    lis.append(speed[0])
+
+#for i,p in enumerate(prediction):
+#    speed = []
+#    if p<2.5 and p>-1.5:
+#        print("for Width %s and Depth %s, best aspeed would be %s" %(w_[i],d_[i],a_[i]))
+ #       continue
 #save least value as list
+print(lis)

@@ -8,7 +8,7 @@ import Rhino.Geometry as rg
 
 # Some Constants
 MAX_ACCEL = 1.5
-MAX_VELOCITY = 2
+MAX_VELOCITY = 2.00
 
 def move_l(plane_to, accel, vel):
     """
@@ -38,19 +38,20 @@ def move_l(plane_to, accel, vel):
     return script
 
 
-def move_l_blend(plane_to, accel, vel, blend_radius = 0):
+def move_l_blend(plane_to, vel, blend_radius):
     """
     Function that returns UR script for linear movement in tool-space.
-    
+
     Args:
         plane_to: Rhino.Geometry Plane. A target plane for calculating pose (in UR base coordinate system)
         accel: tool accel in m/s^2
         vel: tool speed in m/s
-        
+
     Returns:
         script: UR script
     """
-    
+    accel = 1
+
     # Check acceleration and velocity are non-negative and below a set limit
     accel = MAX_ACCEL if (abs(accel) >MAX_ACCEL) else abs(accel)
     vel = MAX_VELOCITY if (abs(vel) > MAX_VELOCITY) else abs(vel)
@@ -64,7 +65,7 @@ def move_l_blend(plane_to, accel, vel, blend_radius = 0):
     _pose_fmt = "p[" + ("%.4f,"*6)[:-1]+"]"
     _pose_fmt = _pose_fmt%tuple(_pose)
     # Format UR script
-    script = "movel(%s, a = %.2f, v = %.2f, r = %.4f)\n"%(_pose_fmt, accel, vel, blend_radius)
+    script = "movel(%s, a = %.3f, v = %.3f, r = %.4f)\n"%(_pose_fmt, accel, vel, blend_radius)
     return script
 
 def move_j(joints, accel, vel):
