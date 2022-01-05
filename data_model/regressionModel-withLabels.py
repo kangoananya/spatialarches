@@ -28,7 +28,7 @@ regr.fit(X,y)
 
 #have test data with width and height and try list of speeds
 q_reg = make_pipeline((PolynomialFeatures(1)),linear_model.LinearRegression())
-test_speeds = [n/100 for n in range(100,225,5)]
+test_speeds = [n/100 for n in range(100,230,5)]
 q_reg.fit(X,y)
 #for loop with prediction for test data as data which is needed
 #have prediction generator and save least value
@@ -38,7 +38,7 @@ w_ = test_data['Width']
 d_ = test_data['Depth']
 #a_ = test_data['aspeed']
 
-#prediction = q_reg.predict(test_data[['Width','Depth','aspeed']])
+#prediction = q_reg.predict(test_data[['Width','Depth','aspeed'
 lis = []
 
 for w,d in zip(w_,d_):
