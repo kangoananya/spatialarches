@@ -60,10 +60,11 @@ ax2.set_zlabel('Deviation', fontsize=12)
 ax2.plot(x_, y_, z_, color='k', zorder=15, linestyle='none', marker='o', alpha=0.5)
 ax2.scatter(xx_pred.flatten(), yy_pred.flatten(), predicted, facecolor=(0,0,0,0), s=10, edgecolor='xkcd:deep pink')
 
-#for ii in np.arange(0, 360, 1):
+# for ii in np.arange(0, 1, 1):
 #    ax2.view_init(elev=32, azim=ii)
 #    fig.savefig('gif_image%d.png' % ii)
 
+plt.show()
 #actual regression and deviation calculation
 q_reg = make_pipeline((PolynomialFeatures(1)),linear_model.LinearRegression())
 test_speeds = [n/100 for n in range(100,225,5)]
